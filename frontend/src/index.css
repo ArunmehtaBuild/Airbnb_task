@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+/* 
+ * Base styles for the Airbnb clone.
+ * We use Tailwind's utility classes in components, 
+ * but set a few global defaults here.
+ */
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #222222;
+  background-color: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
