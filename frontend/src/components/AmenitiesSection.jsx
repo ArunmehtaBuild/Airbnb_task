@@ -53,7 +53,7 @@ import {
   X,
 } from 'lucide-react';
 
-export const ALL_AMENITIES_CATEGORIES = [
+const ALL_AMENITIES_CATEGORIES = [
   {
     category: 'Scenic views',
     items: [
@@ -303,18 +303,38 @@ export default function AmenitiesSection({ amenities, totalCount = 62 }) {
     };
   }, [isModalOpen]);
 
-  // Handle Escape key to close modal
+  const openModal = () => {
+    window.history.pushState({ modal: 'amenities' }, '', window.location.href);
+    setIsModalOpen(true);
+    setSearchQuery('');
+  };
+
+  const closeModal = () => {
+    if (window.history.state?.modal === 'amenities') {
+      window.history.back();
+    } else {
+      setIsModalOpen(false);
+    }
+  };
+
+  // Handle Escape key & mousepad back navigation to close modal
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') {
-        setIsModalOpen(false);
+        closeModal();
       }
     };
+    const handlePopState = () => {
+      setIsModalOpen(false);
+    };
+
     if (isModalOpen) {
       window.addEventListener('keydown', handleKeyDown);
+      window.addEventListener('popstate', handlePopState);
     }
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('popstate', handlePopState);
     };
   }, [isModalOpen]);
 
@@ -388,10 +408,7 @@ export default function AmenitiesSection({ amenities, totalCount = 62 }) {
 
       {/* Show All Amenities Button */}
       <button
-        onClick={() => {
-          setIsModalOpen(true);
-          setSearchQuery('');
-        }}
+        onClick={openModal}
         className="px-6 py-3 border border-[#222222] rounded-lg text-base font-semibold text-[#222222] hover:bg-[#F7F7F7] transition-colors cursor-pointer"
       >
         Show all {totalCount} amenities
@@ -401,7 +418,7 @@ export default function AmenitiesSection({ amenities, totalCount = 62 }) {
       {isModalOpen && (
         <div
           className="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4 sm:p-6"
-          onClick={() => setIsModalOpen(false)}
+          onClick={closeModal}
         >
           <div
             className="bg-white rounded-3xl max-w-[780px] w-full max-h-[88vh] flex flex-col shadow-2xl relative overflow-hidden animate-in fade-in zoom-in-95 duration-200"
@@ -414,14 +431,14 @@ export default function AmenitiesSection({ amenities, totalCount = 62 }) {
             <div className="sticky top-0 bg-white px-6 sm:px-8 pt-6 pb-4 border-b border-[#EBEBEB] z-10 flex flex-col gap-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => setIsModalOpen(false)}
+                  onClick={closeModal}
                   className="w-9 h-9 rounded-full hover:bg-gray-100 flex items-center justify-center text-[#222222] transition-colors -ml-2 cursor-pointer"
                   aria-label="Close"
                 >
                   <ArrowLeft size={20} />
                 </button>
                 <button
-                  onClick={() => setIsModalOpen(false)}
+                  onClick={closeModal}
                   className="w-9 h-9 rounded-full hover:bg-gray-100 flex items-center justify-center text-[#222222] transition-colors -mr-2 cursor-pointer"
                   aria-label="Close dialog"
                 >

@@ -76,12 +76,21 @@ export default function PhotoModal({ onClose, initialSectionId, initialImageInde
     };
   }, []);
 
+  // Helper to cleanly close single photo lightbox with history pop
+  function closeSinglePhoto() {
+    if (window.history.state?.modal === 'photoSingle') {
+      window.history.back();
+    } else {
+      setActivePhotoIndex(null);
+    }
+  }
+
   // Keyboard controls: Escape closes lightbox or modal, arrow keys navigate
   useEffect(() => {
     function handleKeyDown(e) {
       if (e.key === 'Escape') {
         if (activePhotoIndex !== null) {
-          setActivePhotoIndex(null);
+          closeSinglePhoto();
         } else {
           onClose();
         }
@@ -100,6 +109,17 @@ export default function PhotoModal({ onClose, initialSectionId, initialImageInde
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [activePhotoIndex, onClose]);
 
+  // Handle browser & mousepad back navigation for single photo lightbox
+  useEffect(() => {
+    const handlePopState = (event) => {
+      if (event.state?.modal !== 'photoSingle') {
+        setActivePhotoIndex(null);
+      }
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
   // Smooth scroll to a section by ID from thumbnail pills
   const scrollToSection = (sectionId) => {
     scrollToTarget(sectionId, true);
@@ -109,6 +129,7 @@ export default function PhotoModal({ onClose, initialSectionId, initialImageInde
   const openSinglePhoto = (photoUrl) => {
     const idx = allPhotoTourImages.findIndex((p) => p.url === photoUrl || p.thumbnail === photoUrl);
     if (idx !== -1) {
+      window.history.pushState({ modal: 'photoSingle' }, '', window.location.href);
       setActivePhotoIndex(idx);
     }
   };
@@ -402,7 +423,7 @@ export default function PhotoModal({ onClose, initialSectionId, initialImageInde
           {/* Header */}
           <div className="flex items-center justify-between p-4 md:px-8 text-white">
             <button
-              onClick={() => setActivePhotoIndex(null)}
+              onClick={closeSinglePhoto}
               className="flex items-center gap-2 hover:bg-white/10 rounded-full px-3 py-1.5 transition-colors cursor-pointer text-sm font-medium"
             >
               <X size={18} />

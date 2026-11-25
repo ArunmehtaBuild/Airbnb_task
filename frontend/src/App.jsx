@@ -72,15 +72,12 @@ export default function App() {
   useEffect(() => {
     async function loadProperty() {
       try {
-        setLoading(true);
         const data = await fetchProperty(PROPERTY_SLUG);
         if (data) {
           setProperty(data);
         }
       } catch (err) {
         console.warn('Backend offline, using fallback:', err.message);
-      } finally {
-        setLoading(false);
       }
     }
     loadProperty();
@@ -118,6 +115,24 @@ export default function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Browser & mousepad back navigation listener: closes photo modal instead of exiting the web page
+  useEffect(() => {
+    // Reset any stale modal history state on fresh load
+    if (window.history.state?.modal) {
+      window.history.replaceState(null, '', window.location.href);
+    }
+
+    const handlePopState = (event) => {
+      if (!event.state || (event.state.modal !== 'photoTour' && event.state.modal !== 'photoSingle')) {
+        setShowModal(false);
+        setModalInitialSection(null);
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
   function handleSelectProperty(selectedProperty) {
     if (selectedProperty.slug) {
       fetchProperty(selectedProperty.slug)
@@ -147,12 +162,18 @@ export default function App() {
       };
       setModalInitialSection(typeof imageIndex === 'number' ? sectionMap[imageIndex] : null);
     }
+    // Push history state so mousepad back gesture / browser Back returns to page rather than leaving the site
+    window.history.pushState({ modal: 'photoTour' }, '', window.location.href);
     setShowModal(true);
   }
 
   function closeModal() {
-    setShowModal(false);
-    setModalInitialSection(null);
+    if (window.history.state?.modal === 'photoTour' || window.history.state?.modal === 'photoSingle') {
+      window.history.back();
+    } else {
+      setShowModal(false);
+      setModalInitialSection(null);
+    }
   }
 
   const sortedImages = property.images
