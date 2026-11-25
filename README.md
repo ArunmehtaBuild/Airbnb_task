@@ -26,7 +26,7 @@ This application reproduces the complete page up to the end of the **Guest Favou
 6. **Guest Favourite Top Badge Card**:
    - Laurel wreath badge, 4.93 rating score with 5 stars, and 165 reviews count.
 7. **Host Section**:
-   - Host avatar, `Hosted by Curated Stays`, `Superhost · 7 years hosting`.
+   - Host avatar, `Hosted by Arun Mehta`, `Superhost · 7 years hosting`.
 8. **Stay Highlights**:
    - Dedicated workspace, Self check-in with keypad, and Great location rating.
 9. **About This Space**:
