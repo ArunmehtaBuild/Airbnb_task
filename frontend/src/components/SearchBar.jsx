@@ -167,10 +167,10 @@ const SERVICES_DESTINATIONS = [
 const SERVICE_ITEMS = [
   { id: 'photography', name: 'Photography', icon: 'camera' },
   { id: 'chefs', name: 'Chefs', icon: 'utensils' },
-  { id: 'massage', name: 'Massage', icon: 'sparkles' },
+  { id: 'massage', name: 'Massage', icon: 'massage' },
   { id: 'prepared-meals', name: 'Prepared meals', icon: 'utensilscrossed' },
   { id: 'training', name: 'Training', icon: 'dumbbell' },
-  { id: 'makeup', name: 'Make-up', icon: 'sparkles' },
+  { id: 'makeup', name: 'Make-up', icon: 'makeup' },
   { id: 'hair', name: 'Hair', icon: 'scissors' },
   { id: 'spa', name: 'Spa treatments', icon: 'flower' },
   { id: 'catering', name: 'Catering', icon: 'wine' },
@@ -471,6 +471,58 @@ export function ExpandedSearchCapsule({
         return <Camera size={16} strokeWidth={2} />;
       case 'utensils':
         return <Utensils size={16} strokeWidth={2} />;
+      case 'massage':
+        return (
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+            className="shrink-0"
+          >
+            {/* Person lying face down on a massage table */}
+            <circle cx="5" cy="8" r="2.2" />
+            <path d="M7.5 10.5h11a2 2 0 0 1 2 2V14H3v-1.5a2 2 0 0 1 2.2-2h2.3" />
+            {/* Massage table surface and legs */}
+            <path d="M2 14h20" />
+            <path d="M5 14v7" />
+            <path d="M19 14v7" />
+            {/* Gentle soothing massage therapist motion/hands */}
+            <path d="M12 4.5v3" />
+            <path d="M15 5.5l-1.5 2" />
+            <path d="M9 5.5l1.5 2" />
+          </svg>
+        );
+      case 'makeup':
+        return (
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+            className="shrink-0"
+          >
+            {/* Angled makeup brush handle */}
+            <path d="m14 10 7 7a2 2 0 0 1-2.83 2.83l-7-7" />
+            {/* Ferrule band */}
+            <path d="m11 7 3 3" />
+            {/* Flared cosmetic bristles */}
+            <path d="M11 7C9.5 4 6 3 3 3c0 3 1 6.5 4 8l4-4Z" />
+            {/* Highlighter/powder sparkles */}
+            <path d="M19 4v2" />
+            <path d="M18 5h2" />
+          </svg>
+        );
       case 'sparkles':
         return <Sparkles size={16} strokeWidth={2} />;
       case 'utensilscrossed':
