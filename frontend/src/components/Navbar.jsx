@@ -64,7 +64,7 @@ export default function Navbar({ onSelectProperty }) {
           isSearchOpen ? 'h-[176px]' : 'h-20'
         }`}
       >
-        <div className="w-full px-6 sm:px-8 md:px-10 lg:px-12 xl:px-20 h-full flex flex-col justify-start">
+        <div className="w-full px-6 sm:px-8 md:px-10 lg:px-10 xl:px-12 h-full flex flex-col justify-start">
           {/* ROW 1: Logo (Left), Center (Pill when closed / 3 Tabs when open), Profile (Right) */}
           <div className="h-20 flex items-center justify-between shrink-0 relative">
             {/* Left: Official Fleeguide Logo with Bélo symbol and "fleeguide" wordmark */}
@@ -87,7 +87,7 @@ export default function Navbar({ onSelectProperty }) {
                     fill="currentColor"
                   />
                 </svg>
-                <span className="font-bold text-[21px] md:text-[22px] tracking-tight text-[#FF385C] leading-none select-none">
+                <span className="font-bold text-[21px] md:text-[22px] tracking-tight text-[#FF385C] leading-none">
                   fleeguide
                 </span>
               </a>
@@ -136,7 +136,7 @@ export default function Navbar({ onSelectProperty }) {
               <a
                 href="#"
                 onClick={(e) => e.preventDefault()}
-                className="hidden md:inline-block text-[14px] font-semibold text-[#222222] hover:bg-[#F7F7F7] px-3 py-2.5 rounded-xl transition-colors cursor-pointer select-none"
+                className="hidden md:inline-block text-[14px] font-semibold text-[#222222] hover:bg-[#F7F7F7] px-3 py-2.5 rounded-xl transition-colors cursor-pointer"
               >
                 Become a host
               </a>
@@ -196,7 +196,7 @@ export default function Navbar({ onSelectProperty }) {
                         e.preventDefault();
                         setIsProfileMenuOpen(false);
                       }}
-                      className="flex items-center gap-3 px-4 py-2.5 text-[14px] text-[#222222] hover:bg-[#F7F7F7] transition-colors cursor-pointer select-none"
+                      className="flex items-center gap-3 px-4 py-2.5 text-[14px] text-[#222222] hover:bg-[#F7F7F7] transition-colors cursor-pointer"
                     >
                       <Globe size={16} strokeWidth={1.8} className="text-[#222222] shrink-0" />
                       <span>Languages & currency</span>
@@ -209,7 +209,7 @@ export default function Navbar({ onSelectProperty }) {
                         e.preventDefault();
                         setIsProfileMenuOpen(false);
                       }}
-                      className="flex items-center gap-3 px-4 py-2.5 text-[14px] text-[#222222] hover:bg-[#F7F7F7] transition-colors cursor-pointer select-none"
+                      className="flex items-center gap-3 px-4 py-2.5 text-[14px] text-[#222222] hover:bg-[#F7F7F7] transition-colors cursor-pointer"
                     >
                       <HelpCircle size={16} strokeWidth={1.8} className="text-[#222222] shrink-0" />
                       <span>Help Centre</span>
@@ -225,7 +225,7 @@ export default function Navbar({ onSelectProperty }) {
                         e.preventDefault();
                         setIsProfileMenuOpen(false);
                       }}
-                      className="flex items-center justify-between px-4 py-3 hover:bg-[#F7F7F7] transition-colors cursor-pointer select-none group"
+                      className="flex items-center justify-between px-4 py-3 hover:bg-[#F7F7F7] transition-colors cursor-pointer group"
                     >
                       <div className="pr-2">
                         <p className="text-[14px] font-semibold text-[#222222]">
@@ -250,7 +250,7 @@ export default function Navbar({ onSelectProperty }) {
                         e.preventDefault();
                         setIsProfileMenuOpen(false);
                       }}
-                      className="block px-4 py-2.5 text-[14px] text-[#222222] hover:bg-[#F7F7F7] transition-colors cursor-pointer select-none"
+                      className="block px-4 py-2.5 text-[14px] text-[#222222] hover:bg-[#F7F7F7] transition-colors cursor-pointer"
                     >
                       Refer a host
                     </a>
@@ -262,7 +262,7 @@ export default function Navbar({ onSelectProperty }) {
                         e.preventDefault();
                         setIsProfileMenuOpen(false);
                       }}
-                      className="block px-4 py-2.5 text-[14px] text-[#222222] hover:bg-[#F7F7F7] transition-colors cursor-pointer select-none"
+                      className="block px-4 py-2.5 text-[14px] text-[#222222] hover:bg-[#F7F7F7] transition-colors cursor-pointer"
                     >
                       Find a co-host
                     </a>
@@ -278,7 +278,7 @@ export default function Navbar({ onSelectProperty }) {
                         setIsProfileMenuOpen(false);
                         setIsLoginModalOpen(true);
                       }}
-                      className="block px-4 py-2.5 text-[14px] font-semibold text-[#222222] hover:bg-[#F7F7F7] transition-colors cursor-pointer select-none"
+                      className="block px-4 py-2.5 text-[14px] font-semibold text-[#222222] hover:bg-[#F7F7F7] transition-colors cursor-pointer"
                     >
                       Log in or sign up
                     </a>
