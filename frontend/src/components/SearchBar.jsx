@@ -50,11 +50,11 @@ import {
 } from 'lucide-react';
 import { searchProperties } from '../services/propertyApi';
 
-export const HOMES_ICON_URL =
+const HOMES_ICON_URL =
   'https://a0.muscache.com/im/pictures/airbnb-platform-assets/AirbnbPlatformAssets-search-bar-icons/original/4aae4ed7-5939-4e76-b100-e69440ebeae4.png?im_w=240';
-export const EXPERIENCES_ICON_URL =
+const EXPERIENCES_ICON_URL =
   'https://a0.muscache.com/im/pictures/airbnb-platform-assets/AirbnbPlatformAssets-search-bar-icons/original/e47ab655-027b-4679-b2e6-df1c99a5c33d.png?im_w=240';
-export const SERVICES_ICON_URL =
+const SERVICES_ICON_URL =
   'https://a0.muscache.com/im/pictures/airbnb-platform-assets/AirbnbPlatformAssets-search-bar-icons/original/3d67e9a9-520a-49ee-b439-7b3a75ea814d.png?im_w=240';
 
 const SUGGESTED_DESTINATIONS = [
@@ -360,8 +360,10 @@ export function ExpandedSearchCapsule({
   useEffect(() => {
     const cleanQuery = query.trim();
     if (!cleanQuery) {
-      setSuggestions({ properties: [], destinations: [] });
-      return;
+      const resetTimer = setTimeout(() => {
+        setSuggestions({ properties: [], destinations: [] });
+      }, 0);
+      return () => clearTimeout(resetTimer);
     }
 
     const timer = setTimeout(async () => {

@@ -20,9 +20,9 @@ import {
   Tag,
 } from 'lucide-react';
 
-export const LEFT_LAUREL_URL =
+const LEFT_LAUREL_URL =
   'https://a0.muscache.com/im/pictures/airbnb-platform-assets/AirbnbPlatformAssets-GuestFavorite/original/78b7687c-5acf-4ef8-a5ea-eda732ae3b2f.png?im_w=240';
-export const RIGHT_LAUREL_URL =
+const RIGHT_LAUREL_URL =
   'https://a0.muscache.com/im/pictures/airbnb-platform-assets/AirbnbPlatformAssets-GuestFavorite/original/b4005b30-79ff-4287-860c-67829ecd7412.png?im_w=240';
 
 export default function ReviewBreakdown({
