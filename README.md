@@ -1,6 +1,6 @@
 # Full-Stack Airbnb Property Page Clone (MERN Stack)
 
-A pixel-accurate, full-stack recreation of the Airbnb property listing for **"2 BHK Tranquil Bluetique Apartment, Candolim"** in Goa, India. Built for an interview assignment at Fleeguide.
+A pixel-accurate, full-stack recreation of the Airbnb property listing for **"2 BHK Tranquil Bluetique Apartment, Candolim"** in Goa, India. 
 
 ## 🚀 Live Scope & Features
 
